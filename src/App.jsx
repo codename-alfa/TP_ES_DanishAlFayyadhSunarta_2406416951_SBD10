@@ -51,9 +51,14 @@ const response = {
 
 export default function App() {
     const [count, setCount] = useState(0);
+    const [showGif, setShowGif] = useState(false);
     useEffect(() => {
         if (count !== 0 && count % 10 === 0) {
-            alert(`${count} is divisible by 10`);
+            setShowGif(true);
+            alert(`${count} bisa dibagi 10`);
+            setTimeout(() => {
+                setShowGif(false);
+            }, 3000);
         }
     }, [count]);
 
@@ -111,6 +116,11 @@ export default function App() {
                     </button>
                 </div>
             </div>
+            {showGif && (
+                <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-90 transition-opacity" onClick={() => setShowGif(false)}>
+                    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdW5rMjY2emdrcWUzeGxtMDFkd3NiZ2NkYXoydHpudzVwaGF3c2k1bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AWEZg7X5yU47lHriC2/giphy.gif" alt="waspada kebangkitan kink ferrari" className="max-w-full max-h-full object-contain"/>
+                </div>
+            )}
         </div>
     );
 }
