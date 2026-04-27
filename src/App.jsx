@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 //2 
 const response = {
     page: 1,
@@ -37,10 +39,24 @@ const response = {
             body: "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque",
             image: "https://picsum.photos/500",
         },
+        {
+            userId: 1,
+            id: 6,
+            title: "kink ferrari",
+            body: "jumat jumawa\nsabtu merana\nminggu entah kemana\nabsolute cinema",
+            image: "https://pkwerks.com/wp-content/uploads/2022/12/IMG-1-5.jpg",
+        },
     ],
 };
 
 export default function App() {
+    const [count, setCount] = useState(0);
+    useEffect(() => {
+        if (count !== 0 && count % 10 === 0) {
+            alert(`${count} is divisible by 10`);
+        }
+    }, [count]);
+
     return(
         <div> 
             {/*1*/}
@@ -72,6 +88,27 @@ export default function App() {
                             </div>
                         </div>
                     ))}
+                </div>
+            </div>
+
+            {/*3*/}
+            <div className="p-10 flex flex-col items-center bg-white mt-10 border-t">
+                <h1 className="text-4xl font-bold mb-4">Counter Demo</h1>
+                <br></br>
+                <p className="text-6xl font-mono mb-8 text-[#F70D1A]">{count}</p>
+                
+                <div className="flex gap-6">
+                    <button onClick={() => setCount(count - 1)} className="bg-white px-8 py-3 rounded-xl font-bold text-2xl">
+                         - 
+                    </button>
+                    
+                    <button onClick={() => setCount(0)}className="bg-white px-8 py-3 rounded-xl font-bold text-xl">
+                         Reset 
+                    </button>
+                    
+                    <button onClick={() => setCount(count + 1)}className="bg-white px-8 py-3 rounded-xl font-bold text-2xl">
+                         + 
+                    </button>
                 </div>
             </div>
         </div>
